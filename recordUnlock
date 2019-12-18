@@ -1,0 +1,8 @@
+public class recordUnLockDL{
+  @InvocableMethod(label='Unlocks Damage Location' description='Unlocks related damage location record')
+  public static void DL_RecordUnlock(List<ID> ids) {
+    List<Damaged_Location_Application__c> damageLocations = [SELECT ID FROM Damaged_Location_Application__c	WHERE Id in :ids];
+    Approval.unLockResult[] lrList = Approval.unlock(damageLocations , false);
+  }
+}
+
